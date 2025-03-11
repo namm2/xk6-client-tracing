@@ -1,9 +1,9 @@
 name: Release
 
 on:
-  release:
-    types:
-      - published
+  push:
+    branches:
+      - '*'
 
 jobs:
   release:
@@ -14,7 +14,7 @@ jobs:
       - name: Set-up Go
         uses: actions/setup-go@v3
         with:
-          go-version: ^1.22
+          go-version: ^1.23
           cache: true
 
       - name: Test
@@ -40,4 +40,4 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/namm2/xk6-client-tracing:latest,ghcr.io/namm2/xk6-client-tracing:${{ github.event.release.tag_name }}
+          tags: ghcr.io/namm2/xk6-client-tracing:latest,ghcr.io/namm2/xk6-client-tracing:${GITHUB_SHA::6}
