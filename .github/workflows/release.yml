@@ -40,4 +40,4 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/namm2/xk6-client-tracing:latest,ghcr.io/namm2/xk6-client-tracing:${GITHUB_SHA::6}
+          tags: ghcr.io/namm2/xk6-client-tracing:latest,ghcr.io/namm2/xk6-client-tracing:${{ github.sha }}
