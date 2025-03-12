@@ -88,7 +88,6 @@ func (g *ParameterizedGenerator) Traces() ptrace.Traces {
 				g.generateSpan(te, sps.AppendEmpty())
 				idxSpan := sps.At(0)
 				te.ParentID = idxSpan.SpanID().String()
-				fmt.Println(idxSpan.SpanID())
 			} else {
 				g.generateSpan(te, sps.AppendEmpty())
 			}
