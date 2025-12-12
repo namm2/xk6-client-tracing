@@ -11,6 +11,8 @@ on:
 permissions:
   contents: read
   packages: write
+  attestations: write
+  id-token: write
 
 jobs:
   release:
@@ -45,10 +47,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Docker build and push
-        uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v3.0
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
           context: .
           file: Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: ghcr.io/namm2/xk6-client-tracing:latest
